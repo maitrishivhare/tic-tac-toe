@@ -88,7 +88,10 @@ function drawLine(pattern) {
 document.getElementById("win-line").style.width = "0";
 cells.forEach(cell => cell.classList.remove("win"));
 
-        cells.forEach(cell => cell.textContent = "");
+        cells.forEach(cell => {
+        cell.textContent = "";
+        cell.classList.remove("x", "o");
+});
     });
 
 });
