@@ -19,11 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
     cells.forEach((cell, index) => {
         cell.addEventListener("click", () => {
 
-            if (!gameActive || board[index] !== "") return;
+            if (board[index] !== "" || !gameActive) return;
 
             board[index] = currentPlayer;
+
+            // show X / O
             cell.textContent = currentPlayer;
-            cell.className="cell " + currentPlayer.toLowerCase();
+            cell.className = "cell " + currentPlayer.toLowerCase();
 
             if (checkWinner()) {
                 statusText.textContent = `Player ${currentPlayer} wins!`;
@@ -84,9 +86,10 @@ function drawLine(pattern) {
         gameActive = true;
         currentPlayer = "X";
         statusText.textContent = "Player X turn";
+        statusText.style.color = "#111";
 
-document.getElementById("win-line").style.width = "0";
-cells.forEach(cell => cell.classList.remove("win"));
+        document.getElementById("win-line").style.width = "0";
+        cells.forEach(cell => cell.classList.remove("win"));
 
         cells.forEach(cell => {
           cell.textContent = "";
