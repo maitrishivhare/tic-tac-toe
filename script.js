@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             board[index] = currentPlayer;
             cell.textContent = currentPlayer;
-            cell.classList.add(currentPlayer.toLowerCase());
+            cell.className="cell " + currentPlayer.toLowerCase();
 
             if (checkWinner()) {
                 statusText.textContent = `Player ${currentPlayer} wins!`;
@@ -89,8 +89,8 @@ document.getElementById("win-line").style.width = "0";
 cells.forEach(cell => cell.classList.remove("win"));
 
         cells.forEach(cell => {
-        cell.textContent = "";
-        cell.classList.remove("x", "o");
+          cell.textContent = "";
+          cell.className = "cell";
 });
     });
 
