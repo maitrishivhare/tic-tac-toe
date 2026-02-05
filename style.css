@@ -81,7 +81,7 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-  height: 4px;
+  height: 6px;
   background: red;
   border-radius: 4px;
   transform-origin: left center;
