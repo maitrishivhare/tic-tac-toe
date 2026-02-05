@@ -61,26 +61,24 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 function drawLine(pattern) {
   const line = document.getElementById("win-line");
-  const game = document.querySelector(".game");
+  const boardRect = document.querySelector(".game").getBoundingClientRect();
 
-  const first = cells[pattern[0]];
-  const last = cells[pattern[2]];
+  const first = cells[pattern[0]].getBoundingClientRect();
+  const last = cells[pattern[2]].getBoundingClientRect();
 
-  const g = game.getBoundingClientRect();
-  const f = first.getBoundingClientRect();
-  const l = last.getBoundingClientRect();
+  const x1 = first.left + first.width / 2 - boardRect.left;
+  const y1 = first.top + first.height / 2 - boardRect.top;
 
-  const x1 = f.left + f.width / 2 - g.left;
-  const y1 = f.top + f.height / 2 - g.top;
-  const x2 = l.left + l.width / 2 - g.left;
-  const y2 = l.top + l.height / 2 - g.top;
+  const x2 = last.left + last.width / 2 - boardRect.left;
+  const y2 = last.top + last.height / 2 - boardRect.top;
 
   const length = Math.hypot(x2 - x1, y2 - y1);
   const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
 
   line.style.width = length + "px";
-  line.style.transform = translate(${x1}px, ${y1}px) rotate(${angle}deg);
+  line.style.transform = `translate(${x1}px, ${y1}px) rotate(${angle}deg)`;
 }
+
     restartBtn.addEventListener("click", () => {
         board = ["", "", "", "", "", "", "", "", ""];
         gameActive = true;
